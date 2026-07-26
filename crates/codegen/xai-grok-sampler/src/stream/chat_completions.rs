@@ -206,13 +206,17 @@ pub fn stream_chat_completions<'a>(
                     let mut args_for_event: Option<String> = None;
 
                     if let Some(id) = tc_delta.id {
-                        entry.0 = id.clone();
-                        id_for_event = Some(id);
+                        if !id.is_empty() {
+                            entry.0 = id.clone();
+                            id_for_event = Some(id);
+                        }
                     }
                     if let Some(func) = tc_delta.function {
                         if let Some(name) = func.name {
-                            entry.1 = name.clone();
-                            name_for_event = Some(name);
+                            if !name.is_empty() {
+                                entry.1 = name.clone();
+                                name_for_event = Some(name);
+                            }
                         }
                         if let Some(args) = func.arguments {
                             entry.2.push_str(&args);

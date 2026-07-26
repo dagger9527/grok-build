@@ -460,7 +460,7 @@ impl ToolCallRequest {
 pub struct ChatCompletionResponse {
     pub id: String,
     pub object: String,
-    pub created: u64,
+    pub created: Option<u64>,
     pub model: String,
     pub choices: Vec<ChatChoice>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -573,7 +573,7 @@ pub struct CompletionTokensDetails {
 pub struct ChatCompletionChunk {
     pub id: String,
     pub object: String,
-    pub created: u64,
+    pub created: Option<u64>,
     pub model: String,
     pub choices: Vec<ChatChunkChoice>,
     #[serde(skip_serializing_if = "Option::is_none")]
